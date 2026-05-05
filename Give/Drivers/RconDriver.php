@@ -49,7 +49,7 @@ class RconDriver extends AbstractDriver
 
     public function requiredSocial(array $config = []): ?string
     {
-        $cmd = (string) ($config['command'] ?? '');
+        $cmd = (string) ( $config['command'] ?? '' );
         if ($cmd === '') {
             return null;
         }
@@ -59,6 +59,7 @@ class RconDriver extends AbstractDriver
             if ($steamInput === 'manual') {
                 return null;
             }
+
             return 'Steam';
         }
 
@@ -96,7 +97,7 @@ class RconDriver extends AbstractDriver
     public function purchaseFields(array $config = []): array
     {
         $steamInput = $config['steam_input'] ?? 'auto';
-        $cmd = (string) ($config['command'] ?? '');
+        $cmd = (string) ( $config['command'] ?? '' );
         $usesSteam = (bool) preg_match('/\{steam32\}|\{steam64\}|\{accountId\}/i', $cmd);
 
         if ($steamInput !== 'manual' || !$usesSteam) {
@@ -134,7 +135,7 @@ class RconDriver extends AbstractDriver
         $commands = [];
 
         foreach ($commandLines as $line) {
-            if (strpos($line, ';') !== false) {
+            if (str_contains($line, ';')) {
                 $lineCommands = explode(';', $line);
                 foreach ($lineCommands as $cmd) {
                     if (trim($cmd) !== '') {
@@ -150,9 +151,7 @@ class RconDriver extends AbstractDriver
 
         $steam = $this->getSteamIdForCommand($user, $additional['command'], $additional);
 
-        if ($timeId !== null) {
-            $this->time = $timeId;
-        }
+        $this->time = (int) ( $timeId ?? 0 );
 
         if ($simulate) {
             return false;
@@ -199,6 +198,7 @@ class RconDriver extends AbstractDriver
 
             try {
                 $steamClass = steam()->steamid($rawSteamId);
+
                 return $steamClass->ConvertToUInt64();
             } catch (\Throwable) {
                 throw new \RuntimeException(__('givecore.fields.amx_steamid_invalid'));
@@ -245,11 +245,12 @@ class RconDriver extends AbstractDriver
             $days = intdiv($totalSeconds, 86400);
             $hours = intdiv($totalSeconds % 86400, 3600);
             $minutes = intdiv($totalSeconds % 3600, 60);
-            $seconds = $totalSeconds % 60;
+            $seconds = $totalSeconds;
+            $secondsRemainder = $totalSeconds % 60;
 
             $unix = time() + $totalSeconds;
         } else {
-            $days = $hours = $minutes = $seconds = $unix = 0;
+            $days = $hours = $minutes = $seconds = $secondsRemainder = $unix = 0;
         }
 
         $sanitize = static fn($v): string => str_replace([';', "\n", "\r", '"', "'"], '', (string) $v);
@@ -267,6 +268,9 @@ class RconDriver extends AbstractDriver
                 '{hours}',
                 '{minutes}',
                 '{seconds}',
+                '{duration}',
+                '{totalSeconds}',
+                '{secondsRemainder}',
                 '{unix}',
                 '{nickname}',
             ],
@@ -282,6 +286,9 @@ class RconDriver extends AbstractDriver
                 $hours,
                 $minutes,
                 $seconds,
+                $seconds,
+                $seconds,
+                $secondsRemainder,
                 $unix,
                 $sanitize($additional['mc_nick'] ?? ''),
             ],

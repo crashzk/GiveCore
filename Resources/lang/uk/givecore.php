@@ -35,6 +35,11 @@ return [
             'name' => 'K4-System',
             'description' => 'Видача очок через K4-System (CS2)',
         ],
+        'custom_weapons' => [
+            'name' => 'Custom Weapons',
+            'description' => 'Видача доступу до моделей Custom Weapons через cw_access',
+            'already_has_models' => 'Гравець вже має доступ до моделей: :models. Продовжити/оновити доступ?',
+        ],
         'k4system_deliver' => [
             'points' => 'Кількість очок',
         ],
@@ -222,7 +227,7 @@ return [
         'amx_expiry_command_help' => 'Виконується при видаленні адміна з вичерпаним терміном. Плейсхолдери: {steamid}, {nickname}, {access}',
         'command' => 'RCON команда',
         'command_placeholder' => 'Введіть команду',
-        'command_help' => 'Плейсхолдери: {steam32}, {steam64}, {accountId}, {login}, {name}, {email}, {uri}, {days}, {hours}, {minutes}, {seconds}, {unix}, {nickname}',
+        'command_help' => 'Плейсхолдери: {steam32}, {steam64}, {accountId}, {login}, {name}, {email}, {uri}, {days}, {hours}, {minutes}, {seconds}/{duration}/{totalSeconds} = повний строк у секундах, {secondsRemainder} = залишок секунд, {unix}, {nickname}',
         'rcon_steam_input' => 'Введення Steam ID',
         'rcon_steam_input_auto' => 'Автоматично (з прив\'язки)',
         'rcon_steam_input_manual' => 'Ручне введення',
@@ -233,6 +238,10 @@ return [
         'metric' => 'Метрика',
         'operator' => 'Оператор порівняння',
         'value' => 'Значення',
+        'weapon_models' => 'Моделі зброї',
+        'weapon_models_placeholder' => "butterfly_anime\nak_kuronami",
+        'weapon_models_any_placeholder' => 'Залиште порожнім для будь-якої моделі зброї',
+        'weapon_models_help' => 'Ключі моделей з Custom Weapons cw_access.model. Кілька моделей можна розділяти комами або новими рядками.',
     ],
 
     'metrics' => [
@@ -262,6 +271,7 @@ return [
         'ban' => 'Бани',
         'stats' => 'Статистика',
         'rcon' => 'RCON',
+        'CS2' => 'CS2',
         'other' => 'Інше',
     ],
 

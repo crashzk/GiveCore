@@ -2,7 +2,6 @@
 
 namespace Flute\Modules\GiveCore\Give;
 
-use Exception;
 use Flute\Core\Database\Entities\Server;
 use Flute\Core\Database\Entities\User;
 use Flute\Modules\GiveCore\Contracts\CheckableInterface;
@@ -11,6 +10,7 @@ use Flute\Modules\GiveCore\Exceptions\BadConfigurationException;
 use Flute\Modules\GiveCore\Give\Drivers\AdminSystemDriver;
 use Flute\Modules\GiveCore\Give\Drivers\AmxModDriver;
 use Flute\Modules\GiveCore\Give\Drivers\AmxUnbanDriver;
+use Flute\Modules\GiveCore\Give\Drivers\CustomWeaponsDriver;
 use Flute\Modules\GiveCore\Give\Drivers\FabiusDriver;
 use Flute\Modules\GiveCore\Give\Drivers\FreshBansAdminDriver;
 use Flute\Modules\GiveCore\Give\Drivers\FreshBansUnbanDriver;
@@ -42,6 +42,7 @@ class GiveFactory
         'freshbans_admin' => FreshBansAdminDriver::class,
         'k4system' => K4SystemDriver::class,
         'litebans' => LiteBansDriver::class,
+        'custom_weapons' => CustomWeaponsDriver::class,
     ];
 
     /**
