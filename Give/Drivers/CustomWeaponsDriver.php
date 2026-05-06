@@ -108,7 +108,7 @@ class CustomWeaponsDriver extends AbstractDriver implements CheckableInterface
 
         $sid = $this->getSid($dbConnection, $server);
         $db = dbal()->database($dbConnection->dbname);
-        $table = $this->getPrefix($dbConnection->dbname, '') . 'cw_access';
+        $table = $this->getPrefix($dbConnection->dbname, 'cw_') . 'access';
         $steamId64 = (string) steam()->steamid($steamId)->ConvertToUInt64();
         $models = $this->parseModels((string) ( $params['models'] ?? '' ), false);
 
@@ -162,7 +162,7 @@ class CustomWeaponsDriver extends AbstractDriver implements CheckableInterface
 
         $sid = $this->getSid($dbConnection, $server);
         $db = dbal()->database($dbConnection->dbname);
-        $table = $this->getPrefix($dbConnection->dbname, '') . 'cw_access';
+        $table = $this->getPrefix($dbConnection->dbname, 'cw_') . 'access';
         $steamId64 = (string) steam()->steamid($steamId)->ConvertToUInt64();
         $time = (int) ( $timeId ?? $additional['time'] ?? 0 );
 

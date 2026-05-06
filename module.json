@@ -1,6 +1,6 @@
 {
     "name": "GiveCore",
-    "version": "2.2.2",
+    "version": "2.2.3",
     "description": "Central hub for game server integrations: privilege delivery and condition checking",
     "authors": [
         "Flames"
