@@ -79,6 +79,11 @@ return [
             'name' => 'K4-System',
             'description' => 'Выдача очков через K4-System (CS2)',
         ],
+        'custom_weapons' => [
+            'name' => 'Custom Weapons',
+            'description' => 'Выдача доступа к моделям Custom Weapons через cw_access',
+            'already_has_models' => 'У игрока уже есть доступ к моделям: :models. Продлить/обновить доступ?',
+        ],
         'k4system_deliver' => [
             'points' => 'Количество очков',
         ],
@@ -317,7 +322,7 @@ return [
         'amx_expiry_command_help' => 'Выполняется при удалении истёкшего админа. Плейсхолдеры: {steamid}, {nickname}, {access}',
         'command' => 'RCON команда',
         'command_placeholder' => 'Введите команду',
-        'command_help' => 'Плейсхолдеры: {steam32}, {steam64}, {accountId}, {login}, {name}, {email}, {uri}, {days}, {hours}, {minutes}, {seconds}, {unix}, {nickname}',
+        'command_help' => 'Плейсхолдеры: {steam32}, {steam64}, {accountId}, {login}, {name}, {email}, {uri}, {days}, {hours}, {minutes}, {seconds}/{duration}/{totalSeconds} = полный срок в секундах, {secondsRemainder} = остаток секунд, {unix}, {nickname}',
         'rcon_steam_input' => 'Ввод Steam ID',
         'rcon_steam_input_auto' => 'Автоматически (из привязки)',
         'rcon_steam_input_manual' => 'Ручной ввод',
@@ -328,6 +333,10 @@ return [
         'metric' => 'Метрика',
         'operator' => 'Оператор сравнения',
         'value' => 'Значение',
+        'weapon_models' => 'Модели оружия',
+        'weapon_models_placeholder' => "butterfly_anime\nak_kuronami",
+        'weapon_models_any_placeholder' => 'Оставьте пустым для любой модели оружия',
+        'weapon_models_help' => 'Ключи моделей из Custom Weapons cw_access.model. Несколько моделей можно разделять запятыми или новыми строками.',
     ],
 
     'metrics' => [

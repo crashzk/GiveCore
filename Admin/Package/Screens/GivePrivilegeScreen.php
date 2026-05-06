@@ -7,13 +7,13 @@ namespace Flute\Modules\GiveCore\Admin\Package\Screens;
 use Flute\Admin\Platform\Actions\Button;
 use Flute\Admin\Platform\Fields\Input;
 use Flute\Admin\Platform\Fields\Select;
+use Flute\Admin\Platform\Fields\TextArea;
 use Flute\Admin\Platform\Layouts\LayoutFactory;
 use Flute\Admin\Platform\Screen;
 use Flute\Admin\Platform\Support\Color;
 use Flute\Core\Database\Entities\Server;
 use Flute\Core\Database\Entities\User;
 use Flute\Modules\GiveCore\Contracts\DriverInterface;
-use Flute\Modules\GiveCore\Exceptions\NeedToConfirmException;
 use Flute\Modules\GiveCore\Give\GiveFactory;
 use Throwable;
 
@@ -360,6 +360,10 @@ class GivePrivilegeScreen extends Screen
                         ->value($fieldValue)
                         ->min($fieldConfig['min'] ?? null)
                         ->max($fieldConfig['max'] ?? null),
+                    'textarea' => TextArea::make("give.params.{$fieldName}")
+                        ->value($fieldValue)
+                        ->rows($fieldConfig['rows'] ?? 3)
+                        ->placeholder($fieldConfig['placeholder'] ?? ''),
                     default => Input::make("give.params.{$fieldName}")
                         ->value($fieldValue)
                         ->placeholder($fieldConfig['placeholder'] ?? ''),

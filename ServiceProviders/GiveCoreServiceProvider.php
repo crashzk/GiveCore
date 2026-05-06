@@ -11,12 +11,12 @@ use Flute\Modules\GiveCore\Check\Drivers\Admin\GMBansAdminConditionDriver;
 use Flute\Modules\GiveCore\Check\Drivers\Admin\IKSAdminConditionDriver;
 use Flute\Modules\GiveCore\Check\Drivers\Admin\SimpleAdminAdminConditionDriver;
 use Flute\Modules\GiveCore\Check\Drivers\Bans\AdminSystemConditionDriver;
+use Flute\Modules\GiveCore\Check\Drivers\Bans\AdvancedBanConditionDriver;
 use Flute\Modules\GiveCore\Check\Drivers\Bans\AmxConditionDriver;
 use Flute\Modules\GiveCore\Check\Drivers\Bans\GMBansConditionDriver;
 use Flute\Modules\GiveCore\Check\Drivers\Bans\IKSConditionDriver;
-use Flute\Modules\GiveCore\Check\Drivers\Bans\SimpleAdminConditionDriver;
-use Flute\Modules\GiveCore\Check\Drivers\Bans\AdvancedBanConditionDriver;
 use Flute\Modules\GiveCore\Check\Drivers\Bans\LiteBansConditionDriver;
+use Flute\Modules\GiveCore\Check\Drivers\Bans\SimpleAdminConditionDriver;
 use Flute\Modules\GiveCore\Check\Drivers\Bans\SourceBansConditionDriver;
 use Flute\Modules\GiveCore\Check\Drivers\Bans\ZenithBansConditionDriver;
 use Flute\Modules\GiveCore\Check\Drivers\Stats\ArmyRanksUltimateConditionDriver;
@@ -28,6 +28,7 @@ use Flute\Modules\GiveCore\Check\Drivers\Stats\K4SystemConditionDriver;
 use Flute\Modules\GiveCore\Check\Drivers\Stats\LevelRanksConditionDriver;
 use Flute\Modules\GiveCore\Check\Drivers\Stats\QRanksConditionDriver;
 use Flute\Modules\GiveCore\Check\Drivers\Stats\RankMeConditionDriver;
+use Flute\Modules\GiveCore\Drivers\CustomWeaponsModDriver;
 use Flute\Modules\GiveCore\Drivers\FabiusVIPModDriver;
 use Flute\Modules\GiveCore\Drivers\VIPModDriver;
 use Flute\Modules\GiveCore\Give\GiveFactory;
@@ -88,6 +89,7 @@ class GiveCoreServiceProvider extends ModuleServiceProvider
             $modDriverFactory = $container->get(ModDriverFactory::class);
             $modDriverFactory->register('VIP', VIPModDriver::class);
             $modDriverFactory->register('FabiusVIP', FabiusVIPModDriver::class);
+            $modDriverFactory->register('CustomWeapons', CustomWeaponsModDriver::class);
         }
 
         // Register custom SQL drivers (user-defined)
@@ -97,7 +99,7 @@ class GiveCoreServiceProvider extends ModuleServiceProvider
 
         if (config('app.cron_mode')) {
             scheduler()->call(static function (): void {
-                (new AmxExpiredCleanupService())->cleanup();
+                ( new AmxExpiredCleanupService() )->cleanup();
             })->daily('04:00');
         }
 

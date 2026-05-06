@@ -78,6 +78,11 @@ return [
             'name' => 'K4-System',
             'description' => 'Grant points via K4-System (CS2)',
         ],
+        'custom_weapons' => [
+            'name' => 'Custom Weapons',
+            'description' => 'Grant access to Custom Weapons models via cw_access',
+            'already_has_models' => 'The player already has access to: :models. Extend/update access?',
+        ],
         'k4system_deliver' => [
             'points' => 'Points amount',
         ],
@@ -309,7 +314,7 @@ return [
         'amx_expiry_command_help' => 'Executed when an expired admin is removed. Placeholders: {steamid}, {nickname}, {access}',
         'command' => 'RCON Command',
         'command_placeholder' => 'Enter command',
-        'command_help' => 'Placeholders: {steam32}, {steam64}, {accountId}, {login}, {name}, {email}, {uri}, {days}, {hours}, {minutes}, {seconds}, {unix}, {nickname}',
+        'command_help' => 'Placeholders: {steam32}, {steam64}, {accountId}, {login}, {name}, {email}, {uri}, {days}, {hours}, {minutes}, {seconds}/{duration}/{totalSeconds} = full duration in seconds, {secondsRemainder} = seconds remainder, {unix}, {nickname}',
         'rcon_steam_input' => 'Steam ID Input',
         'rcon_steam_input_auto' => 'Automatic (from linked account)',
         'rcon_steam_input_manual' => 'Manual input',
@@ -320,6 +325,10 @@ return [
         'metric' => 'Metric',
         'operator' => 'Comparison Operator',
         'value' => 'Value',
+        'weapon_models' => 'Weapon models',
+        'weapon_models_placeholder' => "butterfly_anime\nak_kuronami",
+        'weapon_models_any_placeholder' => 'Leave empty for any weapon model',
+        'weapon_models_help' => 'Model keys from Custom Weapons cw_access.model. Separate multiple models with commas or new lines.',
     ],
 
     'metrics' => [
